@@ -1,0 +1,15 @@
+{
+  "outpost_hub": {
+    "max_health": 1800,
+    "influence_radius": 600,
+    "cost_metal": 260,
+    "cost_energy": 220
+  },
+  "missile_silo": {
+    "max_health": 1200,
+    "cooldown_seconds": 18,
+    "impact_damage": 300,
+    "cost_metal": 420,
+    "cost_energy": 500
+  }
+}

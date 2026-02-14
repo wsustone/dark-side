@@ -1,0 +1,28 @@
+{
+  "flagship": {
+    "max_health": 2000,
+    "move_speed": 260,
+    "build_radius": 380
+  },
+  "attack_drone": {
+    "max_health": 120,
+    "move_speed": 320,
+    "damage": 12,
+    "cost_metal": 45,
+    "cost_energy": 30
+  },
+  "constructor_drone": {
+    "max_health": 100,
+    "move_speed": 300,
+    "build_power": 1.0,
+    "cost_metal": 55,
+    "cost_energy": 40
+  },
+  "frigate": {
+    "max_health": 650,
+    "move_speed": 190,
+    "damage": 38,
+    "cost_metal": 210,
+    "cost_energy": 130
+  }
+}
