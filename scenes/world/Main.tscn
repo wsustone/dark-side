@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scripts/core/game_manager.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/core/rts_camera.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/units/Flagship.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/buildings/MissileSilo.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/world/ObjectiveSector.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/buildings/OutpostHub.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/world/ResourceNode.tscn" id="7"]
+[ext_resource type="Script" path="res://scripts/ai/skirmish_bot.gd" id="8"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
@@ -14,6 +18,7 @@ offset_top = -5000.0
 offset_right = 5000.0
 offset_bottom = 5000.0
 color = Color(0.0470588, 0.141176, 0.266667, 1)
+mouse_filter = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 0)
@@ -26,3 +31,54 @@ position = Vector2(0, 0)
 
 [node name="MissileSilo" parent="." instance=ExtResource("4")]
 position = Vector2(280, 100)
+
+[node name="EnemyOutpost" parent="." instance=ExtResource("6")]
+position = Vector2(-420, -120)
+team_owner = 2
+
+[node name="ObjectiveSectorA" parent="." instance=ExtResource("5")]
+position = Vector2(-280, -180)
+
+[node name="ObjectiveSectorB" parent="." instance=ExtResource("5")]
+position = Vector2(80, -240)
+
+[node name="ObjectiveSectorC" parent="." instance=ExtResource("5")]
+position = Vector2(340, -30)
+
+[node name="ResourceNodeA" parent="." instance=ExtResource("7")]
+position = Vector2(-190, 110)
+
+[node name="ResourceNodeB" parent="." instance=ExtResource("7")]
+position = Vector2(360, -180)
+
+[node name="ResourceNodeC" parent="." instance=ExtResource("7")]
+position = Vector2(-470, 190)
+
+[node name="ResourceNodeD" parent="." instance=ExtResource("7")]
+position = Vector2(40, -340)
+
+[node name="SkirmishBot" type="Node" parent="."]
+script = ExtResource("8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MatchStatus" type="Label" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 620.0
+offset_bottom = 44.0
+text = "Match booting..."
+
+[node name="QueueDroneButton" type="Button" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 50.0
+offset_right = 194.0
+offset_bottom = 82.0
+text = "Queue Attack Drone"
+
+[node name="ControlHint" type="Label" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 88.0
+offset_right = 560.0
+offset_bottom = 108.0
+text = "Left-click move flagship | Right-click fire missile | Wheel zoom | Middle-drag pan"

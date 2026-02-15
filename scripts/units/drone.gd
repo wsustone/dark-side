@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 var health: float
 var target_position: Vector2
+var is_selected: bool = false
 
 func _ready() -> void:
 	health = max_health
@@ -22,7 +23,17 @@ func _physics_process(_delta: float) -> void:
 func set_move_target(world_pos: Vector2) -> void:
 	target_position = world_pos
 
+func set_selected(selected: bool) -> void:
+	if is_selected == selected:
+		return
+	is_selected = selected
+	queue_redraw()
+
 func apply_damage(amount: float) -> void:
 	health = max(0.0, health - amount)
 	if health <= 0.0:
 		queue_free()
+
+func _draw() -> void:
+	if is_selected:
+		draw_arc(Vector2.ZERO, 14.0, 0.0, TAU, 32, Color(0.95, 1.0, 0.35, 0.95), 2.0)
